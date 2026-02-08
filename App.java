@@ -27,14 +27,6 @@ public class App {
 
         //htmlContent = htmlContent.replaceAll("[\\n?\\r]", " ");
 
-        String[] parts = htmlContent.split("[\\n?\\r]");
-        String htmlVii = "";
-
-        for(String part : parts){
-            part = part.trim();
-            htmlVii = htmlVii.concat(part);
-        }
-
         //htmlContent = htmlContent.replaceAll("[\\t?\\r]", "");
 
         //while(htmlContent.indexOf("\n") >= 0 && htmlContent.indexOf("\t") >= 0){
@@ -43,7 +35,9 @@ public class App {
             //}
         //}
 
-        System.out.println("\n" + htmlVii + "\n");
+
+        HtmlHarvest.MostInternText(htmlContent);
+        //System.out.println("\n" + htmlVii + "\n");
         //System.out.println(htmlContent);
 
 
