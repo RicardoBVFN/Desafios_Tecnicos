@@ -24,7 +24,11 @@ public class App {
         String htmlContent = Files.readString(htmlPath, StandardCharsets.UTF_8);
 
         String[] htmlSegments = HtmlHarvest.HtmlSegmentation(htmlContent);
-        String mostInternText = HtmlHarvest.MostInternTxtBlock(htmlSegments);
-        System.out.println(mostInternText);
+        if(HtmlHarvest.IsMalformed(htmlSegments)){
+            String mostInternText = HtmlHarvest.MostInternTxtBlock(htmlSegments);
+            System.out.println(mostInternText);
+        } else{
+            System.out.println("malformed HTML");
+        }
     }
 }

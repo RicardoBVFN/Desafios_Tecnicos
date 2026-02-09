@@ -52,4 +52,22 @@ public class HtmlHarvest{
 
         return mostInternMessage;
     }
+
+    public static boolean IsMalformed(String[] htmlParts){
+        int identationIndex = 0;
+
+        for(String part : htmlParts){
+            if(part.contains("<")){
+                if(part.contains("/")){
+                    identationIndex--;
+                } else{
+                    identationIndex++;
+                }
+            }
+        }
+
+        if(identationIndex % 2 == 0){
+            return true;
+        }   return false;
+    }
 }
