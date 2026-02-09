@@ -33,13 +33,11 @@ public class HtmlHarvest{
                 }
             }
         }
-        //System.out.println(textBlocks);
+        
         textBlocks.sort((x, y) -> (x.getIdentationIndex() < y.getIdentationIndex()) ? 1 : ((x == y) ? 0 : -1));
-        //System.out.println(textBlocks);
 
         int mostInternIndex = textBlocks.get(0).getIdentationIndex(),
             iterator = 0;
-        //System.out.println(mostInternIndex);
         String mostInternMessage = "teste de variação";
 
         for(TextBlock part : textBlocks){
