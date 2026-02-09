@@ -1,8 +1,6 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.nio.charset.StandardCharsets;
 //import java.net.URI;
 //import java.net.http.HttpClient;
@@ -25,23 +23,8 @@ public class App {
         Path htmlPath = Path.of("test.html");
         String htmlContent = Files.readString(htmlPath, StandardCharsets.UTF_8);
 
-        //htmlContent = htmlContent.replaceAll("[\\n?\\r]", " ");
-
-        //htmlContent = htmlContent.replaceAll("[\\t?\\r]", "");
-
-        //while(htmlContent.indexOf("\n") >= 0 && htmlContent.indexOf("\t") >= 0){
-            //if(htmlContent.indexOf("\n") >= 0){
-
-            //}
-        //}
-
-
-        HtmlHarvest.MostInternText(htmlContent);
-        //System.out.println("\n" + htmlVii + "\n");
-        //System.out.println(htmlContent);
-
-
-
-        //System.out.printf("\nHTML recebido da página: %s", recivedHtml);
+        String[] htmlSegments = HtmlHarvest.HtmlSegmentation(htmlContent);
+        String mostInternText = HtmlHarvest.MostInternTxtBlock(htmlSegments);
+        System.out.println(mostInternText);
     }
 }

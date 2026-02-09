@@ -3,18 +3,20 @@ import java.util.List;
 
 public class HtmlHarvest{
 
-    public static String MostInternText(String htmlText){
+    public static String[] HtmlSegmentation(String htmlText){
+        String[] parts = htmlText.split("[\\r?\\n]");
+        for(int i = 0; i < parts.length; i++){
+            parts[i] = parts[i].strip();
+        }
+
+        return parts;
+    }
+
+    public static String MostInternTxtBlock(String[] htmlParts){
         int identationIndex = 0;
         List<TextBlock> textBlocks = new ArrayList<>();
-        String mostInternText;
-        
-        String[] parts = htmlText.split("[\\n?\\r]");
-        //String htmlVii = "";
 
-        for(String part : parts){
-            part = part.replaceAll("\t", "");
-            part = part.trim();
-
+        for(String part : htmlParts){
             if(part != "" && part != null){
                 if(part.contains("<") ){
                     if(part.contains("/")){
@@ -31,9 +33,10 @@ public class HtmlHarvest{
                 }
             }
         }
+        System.out.println(textBlocks);
+        textBlocks.sort((x, y) -> (x.getIdentationIndex() < y.getIdentationIndex()) ? 1 : ((x == y) ? 0 : -1));
+        System.out.println(textBlocks);
 
-        System.out.println(textBlocks.toString());
-
-        return "";
+        return textBlocks.get(0).getTextMessage();
     }
 }
