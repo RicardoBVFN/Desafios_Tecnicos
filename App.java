@@ -1,7 +1,4 @@
 import java.io.IOException;
-// import java.nio.file.Files;
-// import java.nio.file.Path;
-// import java.nio.charset.StandardCharsets;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -21,9 +18,6 @@ public class App {
         String recivedHtml = response.body();
 
         System.out.println(recivedHtml);
-
-        // Path htmlPath = Path.of("test.html");
-        // String htmlContent = Files.readString(htmlPath, StandardCharsets.UTF_8);
 
         String[] htmlSegments = HtmlHarvest.HtmlSegmentation(recivedHtml);
         if(HtmlHarvest.IsMalformed(htmlSegments)){
